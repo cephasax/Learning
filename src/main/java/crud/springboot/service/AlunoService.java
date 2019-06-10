@@ -30,8 +30,8 @@ public class AlunoService extends GenericService<Aluno, Integer> {
 		return true;
 	}
 
-	public List<Aluno> findByNome(String nome) throws CrudException {
-		Optional<List<Aluno>> alunos = alunoRepo.findByNome(nome);
+	public List<Aluno> findByNombre(String nombre) throws CrudException {
+		Optional<List<Aluno>> alunos = alunoRepo.findByNombre(nombre);
 
 		if (alunos.isPresent()) {
 			return alunos.get();
@@ -40,12 +40,10 @@ public class AlunoService extends GenericService<Aluno, Integer> {
 		}
 	}
 	
-	public Aluno findByMatricula(String matricula) throws CrudException {
-		Optional<Aluno> a = alunoRepo.findByMatricula(matricula);
-		if(a.isPresent()) {
-			return a.get();
-		} else {
-			throw new CrudException("Não foram encontrados registros");
-		}
-	}
+	/*
+	 * public Aluno findByMatricula(String matricula) throws CrudException {
+	 * Optional<Aluno> a = alunoRepo.findByMatricula(matricula); if(a.isPresent()) {
+	 * return a.get(); } else { throw new
+	 * CrudException("Não foram encontrados registros"); } }
+	 */
 }

@@ -1,6 +1,6 @@
 package crud.springboot.wekautils;
 
-import crud.springboot.model.Aluno;
+import crud.springboot.model.AlunoWeka;
 import weka.core.Instance;
 
 public class AlunoWekaController{
@@ -11,8 +11,8 @@ public class AlunoWekaController{
 		this.mlm = mlm;
 	}
 	
-	public Aluno classifyAluno(Aluno alunoInstance) {
-		Aluno aluno = alunoInstance;
+	public AlunoWeka classifyAlunoWeka(AlunoWeka alunoInstance) {
+		AlunoWeka aluno = alunoInstance;
 
 		String classValue = new String(predictClassForAluno(alunoInstance));
 		aluno.setAlunoClass(classValue);
@@ -20,7 +20,7 @@ public class AlunoWekaController{
 		return aluno;
 	}
 	
-	private String predictClassForAluno(Aluno alunoInstance) {
+	private String predictClassForAluno(AlunoWeka alunoInstance) {
 		AlunoWekaUtils awu = new AlunoWekaUtils();
 
 		Instance instance = awu.alunoToWekaInstance(alunoInstance);

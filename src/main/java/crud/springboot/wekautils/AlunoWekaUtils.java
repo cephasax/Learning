@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import crud.springboot.model.Aluno;
+import crud.springboot.model.AlunoWeka;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
@@ -92,7 +92,7 @@ public class AlunoWekaUtils {
 		return classValues;
 	}
 
-	public Instance alunoToWekaInstance(Aluno alunoInstance) {
+	public Instance alunoToWekaInstance(AlunoWeka alunoInstance) {
 		this.dataset.clear();
 		
 		double[] values = new double[dataset.numAttributes()];

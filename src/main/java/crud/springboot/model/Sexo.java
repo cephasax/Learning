@@ -1,22 +1,33 @@
 package crud.springboot.model;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "sexo")
 public class Sexo {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id_sexo")
 	private int id;
 
 	private String descripcion;
+
+	@OneToMany(mappedBy = "sexo", fetch = FetchType.LAZY)
+	@Cascade({CascadeType.ALL})
+	private Collection<Aluno> alunos;
 
 	public int getId() {
 		return id;
@@ -32,6 +43,14 @@ public class Sexo {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public Collection<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(Collection<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 }

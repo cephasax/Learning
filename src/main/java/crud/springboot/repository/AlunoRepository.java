@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import crud.springboot.model.Aluno;
 
 public interface AlunoRepository extends CrudRepository<Aluno, Integer> {
-	Optional<Aluno> findByMatricula(String matricula);
-	Optional<List<Aluno>> findByNome(String nome);
+	//Optional<Aluno> findByMatricula(String matricula);
+	Optional<List<Aluno>> findByNombre(String nombre);
 }
