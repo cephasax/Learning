@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="fragments/layout">
+<head>
+<title>SmartManager</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Ramon Malaquias" />
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+	<section layout:fragment="page_content" id="page_content">
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Start graphs div -->
+					<div class="col-lg-12">
+						<div id="grafico1"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="grafico2"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="grafico3"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="list_tarefa">
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Start todo tasks card -->
+					<div class="col-lg-4">
+						<div class="checklist card">
+							<div class="card-close">
+								<div class="dropdown">
+									<button type="button" id="closeCard3" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"
+										class="dropdown-toggle">
+										<i class="fa fa-ellipsis-v"></i>
+									</button>
+									<div aria-labelledby="closeCard3"
+										class="dropdown-menu dropdown-menu-right has-shadow">
+										<a href="#" class="dropdown-item remove"> <i
+											class="fa fa-times"></i>Close
+										</a> <a href="#" class="dropdown-item edit"> <i
+											class="fa fa-gear"></i>Edit
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-header d-flex align-items-center">
+								<h3 class="h4">A fazer</h3>
+							</div>
+							<div id="tasks_to_do" class="card-body" ondrop="drop(event)"
+								ondragover="allowDrop(event)">
+								<div th:each="tarefa, count : ${tasksToDo}">
+									<div class="item d-flex" th:id="'divToDo' + ${count.count}"
+										draggable="true" ondragstart="drag(event)"
+										ondrop="drop(event)"
+										th:ondragend="'dragend(event,' + ${tarefa.idTask} + ')'"
+										ondragover="allowDrop(event)">
+										<div class="col-lg-3">
+											<div class="avatar">
+												<img
+													th:src="@{'/image/' + ${tarefa.responsibleCollaborator.user.picture.id}}"
+													alt="..." class="img-fluid rounded-circle" />
+											</div>
+										</div>
+										<div class="col-lg-6" th:text="${tarefa.title}"></div>
+										<div class="col-lg-3" th:text="${tarefa.formattedDateToResolution}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Finish todo tasks card -->
+					<!-- Start doing tasks card -->
+					<div class="col-lg-4">
+						<div class="card">
+							<div class="card-close">
+								<div class="dropdown">
+									<button type="button" id="closeCard3" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"
+										class="dropdown-toggle">
+										<i class="fa fa-ellipsis-v"></i>
+									</button>
+									<div aria-labelledby="closeCard3"
+										class="dropdown-menu dropdown-menu-right has-shadow">
+										<a href="#" class="dropdown-item remove"> <i
+											class="fa fa-times"></i>Close
+										</a> <a href="#" class="dropdown-item edit"> <i
+											class="fa fa-gear"></i>Edit
+										</a>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="card-header d-flex align-items-center">
+									<h3 class="h4">Fazendo</h3>
+								</div>
+								<div id="tasks_doing" class="card-body" ondrop="drop(event)"
+									ondragover="allowDrop(event)">
+									<div th:each="tarefa, count : ${tasksDoing}">
+										<div class="item d-flex" th:id="'divDoing' + ${count.count}"
+											draggable="true" ondragstart="drag(event)"
+											ondrop="drop(event)"
+											th:ondragend="'dragend(event,' + ${tarefa.idTask} + ')'"
+											ondragover="allowDrop(event)">
+											<div class="col-lg-3">
+												<div class="avatar">
+													<img
+														th:src="@{'/image/' + ${tarefa.responsibleCollaborator.user.picture.id}}"
+														alt="..." class="img-fluid rounded-circle" />
+												</div>
+											</div>
+											<div class="col-lg-6" th:text="${tarefa.title}"></div>
+											<div class="col-lg-3" th:text="${tarefa.formattedDateToResolution}"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Finish doing tasks card -->
+					<!-- Start done tasks card -->
+					<div class="col-lg-4">
+						<div class="card">
+							<div class="card-close">
+								<div class="dropdown">
+									<button type="button" id="closeCard3" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false"
+										class="dropdown-toggle">
+										<i class="fa fa-ellipsis-v"></i>
+									</button>
+									<div aria-labelledby="closeCard3"
+										class="dropdown-menu dropdown-menu-right has-shadow">
+										<a href="#" class="dropdown-item remove"> <i
+											class="fa fa-times"></i>Close
+										</a> <a href="#" class="dropdown-item edit"> <i
+											class="fa fa-gear"></i>Edit
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="card-header d-flex align-items-center">
+								<h3 class="h4">Feitas</h3>
+							</div>
+							<div id="tasks_done" class="card-body" ondrop="drop(event)"
+								ondragover="allowDrop(event)">
+								<div th:each="tarefa, count: ${tasksDone}">
+									<div class="item d-flex" th:id="'divDone' + ${count.count}"
+										draggable="true" ondragstart="drag(event)"
+										ondrop="drop(event)"
+										th:ondragend="'dragend(event,' + ${tarefa.idTask} + ')'"
+										ondragover="allowDrop(event)">
+										<div class="col-lg-3">
+											<div class="avatar">
+												<img
+													th:src="@{'/image/' + ${tarefa.responsibleCollaborator.user.picture.id}}"
+													alt="..." class="img-fluid rounded-circle" />
+											</div>
+										</div>
+										<div class="col-lg-6" th:text="${tarefa.title}"></div>
+										<div class="col-lg-3" th:text="${tarefa.formattedDateToResolution}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Finish done tasks card -->
+				</div>
+			</div>
+			<script th:src="@{/js/rs_ajax.js}"></script>
+			<script>
+				function allowDrop(ev) {
+					ev.preventDefault();
+				}
+
+				function drag(ev) {
+					ev.dataTransfer.setData("text", ev.target.id);
+				}
+
+				function dragend(ev, obj) {
+					var id_obj = obj;
+					var id_div_status = ev.target.parentElement.id;
+					console.log(id_obj);
+					console.log(id_div_status);
+					
+					var new_status = '';
+					
+					switch(id_div_status){
+					case 'tasks_to_do':
+						new_status = 'TO_DO';						
+						break;
+					case 'tasks_doing':
+						new_status = 'DOING';
+						break;
+					case 'tasks_done':
+						new_status = 'DONE';
+						break;
+					default:
+						new_status = 'INVALID';						
+						break;
+					}
+					
+					console.log(new_status);
+					
+					if(new_status != 'INVALID'){
+						updateStatusTask(id_obj, new_status);
+					}
+				}
+
+				function drop(ev) {
+					ev.preventDefault();
+					var data = ev.dataTransfer.getData("text");
+					if (ev.target.id == 'tasks_to_do' || ev.target.id == 'tasks_doing'
+							|| ev.target.id == 'tasks_done') {
+						ev.target.appendChild(document.getElementById(data));
+					}
+				}
+			</script>
+		</section>
+		<section>
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-close">
+						<div class="dropdown">
+							<button type="button" id="closeCard3" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"
+								class="dropdown-toggle">
+								<i class="fa fa-ellipsis-v"></i>
+							</button>
+							<div aria-labelledby="closeCard3"
+								class="dropdown-menu dropdown-menu-right has-shadow">
+								<a href="#" class="dropdown-item remove"> <i
+									class="fa fa-times"></i>Close
+								</a><a href="#" class="dropdown-item edit"> <i
+									class="fa fa-gear"></i>Edit
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="card-header d-flex align-items-center">
+						<h3 class="h4">Tarefas</h3>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>Título</th>
+										<th>Responsável</th>
+										<th>Data para resolução</th>
+										<th>Situação</th>
+										<th>Opções</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="tarefa : ${tasks}">
+										<td th:text="${tarefa.title}">${tarefa.title}</td>
+										<td th:text="${tarefa.responsibleCollaborator.name}">${tarefa.responsibleCollaborator.name}</td>
+										<td th:text="${tarefa.formattedDateToResolution}">${tarefa.formattedDateToResolution}</td>
+										<td th:text="${tarefa.status.description}">${tarefa.status.description}</td>
+										<td><a class="btn btn-sm btn-primary"
+											th:href="@{'/task/edit/' + ${tarefa.idTask}}">Editar</a> <a
+											class="btn btn-sm btn-danger"
+											th:href="@{'/task/delete/' + ${tarefa.idTask}}">Excluir</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script th:src="@{/js/rs_plotly_test.js}"></script>
+		<script th:inline="javascript">
+				/*<![CDATA[*/	
+				var graphTasksUnidade = /*[[${graphTasksUnidade}]]*/;
+				var graphTasksUnidadeDetalhe = /*[[${graphTasksUnidadeDetalhe}]]*/;
+				var graphAvgTasksUnidadeDetalhe = /*[[${graphAvgTasksUnidadeDetalhe}]]*/;				
+				/*]]>*/
+				makeColoredBarChart('grafico1', graphTasksUnidade);
+				makeColoredBarChart('grafico2', graphTasksUnidadeDetalhe);
+				makeColoredBarChart('grafico3', graphAvgTasksUnidadeDetalhe);
+		</script>
+	</section>
+</body>
+</html>

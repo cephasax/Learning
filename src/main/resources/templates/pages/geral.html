@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="fragments/layout">
+<head>
+<title>SmartManager</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Ramon Malaquias" />
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+	<section layout:fragment="page_content" id="page_content">
+	
+		<div class="dashboard-counts no-padding-bottom">
+			<div class="container-fluid row">
+				<div class="col-md-12 text-center center-block">
+					<a href="/geral/" class="btn btn-info">Todos os anos</a>
+					<a href="/geral/2015" class="btn btn-primary">2015</a>
+					<a href="/geral/2016" class="btn btn-primary">2016</a>
+					<a href="/geral/2017" class="btn btn-primary">2017</a>
+					<a href="/geral/2018" class="btn btn-primary">2018</a>
+				</div>
+			</div>
+		</div>
+	
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Start graphs div -->
+					<div class="col-lg-12">
+						<div id="grafico1"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="grafico2"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="grafico3"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script th:src="@{/js/rs_plotly.js}"></script>
+		<script th:src="@{/js/rs_plotly_test.js}"></script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/	
+			var graphProcessosArquivados = /*[[${graphProcessosArquivados}]]*/;
+			var graphRedistribuidos = /*[[${graphRedistribuidos}]]*/;
+			var graphTempoMedio = /*[[${graphTempoMedio}]]*/;
+			/*]]>*/		
+				
+			makeColoredBarChart('grafico1', graphProcessosArquivados);
+			makeColoredBarChart('grafico2', graphRedistribuidos);
+			makeColoredBarChart('grafico3', graphTempoMedio);
+		</script>
+	</section>
+</body>
+</html>

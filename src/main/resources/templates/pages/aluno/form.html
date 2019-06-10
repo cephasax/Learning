@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CRUD - Spring Boot</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Ramon Malaquias" />
+</head>
+<body>
+
+	<h1>Teste de Aluno</h1>
+	
+	<a th:href="@{/professor/list}">Listar Professores</a>
+	<a th:href="@{/aluno/list}">Listar Alunos</a>
+	<a th:href="@{/turma/list}">Listar Turmas</a>
+	<br />
+	
+	<form th:action="@{/aluno/salvar}" th:object="${aluno}"
+		method="post">
+		<input type="hidden" th:field="*{id}" />
+		<label for="nome">Nome: </label>
+		<input type="text" id="nome" th:field="*{nome}" />
+		<br />
+		<label for="matricula">Matrícula: </label>
+		<input type="text" id="matricula" th:field="*{matricula}" />
+		<br />
+		<button type="submit">Cadastrar</button>
+	</form>
+
+</body>
+</html>

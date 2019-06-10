@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CRUD - Spring Boot</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Ramon Malaquias" />
+</head>
+<body>
+
+	<h1>Cadastro de Turma</h1>
+		<a th:href="@{/professor/list}">Listar Professores</a>
+		<a th:href="@{/aluno/list}">Listar Alunos</a>
+		<a th:href="@{/turma/list}">Listar Turmas</a>
+		<br></br>
+	<form th:action="@{/turma/salvar}" th:object="${turma}"
+		method="post">
+		<input type="hidden" th:field="*{id}" />
+		<label for="horario">Horário: </label>
+		<input type="text" id="horario" th:field="*{horario}" />
+		<br />
+		<select th:field="*{professor}">
+			<option th:each="professor : ${listProfessor}"
+				th:value="${professor.id}" th:text="${professor.nome}">
+			</option>
+		</select> 
+		<br />
+		<select th:field="*{alunos}" multiple="">
+			<option th:each="aluno : ${listAluno}"
+				th:value="${aluno.id}" th:text="${aluno.nome}">
+			</option>
+		</select> 
+		<br />
+		
+		<button type="submit">Cadastrar</button>
+	</form>
+
+</body>
+</html>

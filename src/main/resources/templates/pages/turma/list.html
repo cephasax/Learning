@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CRUD - Spring Boot</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Ramon Malaquias" />
+</head>
+<body>
+
+	<h1>Lista de Turmas</h1>
+		<a th:href="@{/professor/list}">Listar Professores</a>
+		<a th:href="@{/aluno/list}">Listar Alunos</a>
+		<a th:href="@{/turma/list}">Listar Turmas</a>
+		<br></br>
+	<a th:href="@{/turma/form}">Cadatrar novo</a>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Horário</th>
+				<th>Professor</th>
+				<th>Alunos</th>
+				<th>Opções</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="turma : ${turmas}">
+				<td th:text="${turma.horario}">${turma.horario}</td>
+				<td th:text="${turma.professor != null} ? ${turma.professor.nome} : 'Sem professor'">${turma.professor.nome}</td>
+				<td>
+					<div th:each="aluno : ${turma.alunos}">
+						<div th:text="${aluno.nome}"></div>
+					</div>
+				</td>
+				<td>
+					<a th:href="@{'/turma/editar/' + ${turma.id}}">Editar</a>
+					<a th:href="@{'/turma/excluir/' + ${turma.id}}">Excluir</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

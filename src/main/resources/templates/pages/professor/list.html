@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="fragments/layout">
+<head>
+<title>Lista de Professores aaa</title>
+</head>
+<body>
+	<section layout:fragment="page_content" id="page_content">	
+		<h1>Lista de Professores</h1>
+		
+		<a th:href="@{/professor/list}">Listar Professores</a>
+		<a th:href="@{/aluno/list}">Listar Alunos</a>
+		<a th:href="@{/turma/list}">Listar Turmas</a>
+		<br></br>
+	
+		<a th:href="@{/professor/form}">Cadastrar novo</a>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>SIAPE</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="professor : ${professores}">
+					<td th:text="${professor.nome}">${professor.nome}</td>
+					<td th:text="${professor.siape}">${professor.siape}</td>
+					<td>
+						<a th:href="@{'/professor/editar/' + ${professor.id}}">Editar</a>
+						<a th:href="@{'/professor/excluir/' + ${professor.id}}">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</body>
+</html>
