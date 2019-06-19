@@ -119,7 +119,7 @@ public class AlunoWekaUtils {
 		values[19] = alunoInstance.getReligiao_OTRARELIGION();
 		values[20] = alunoInstance.getReligiao_CRISTIANOEVANGELICO();
 		values[21] = alunoInstance.getReligiao_AGNOSTICO();
-		values[22] = alunoInstance.getCursoGraduacao();
+		values[22] = Double.valueOf(alunoInstance.getCursoGraduacao());
 		values[23] = alunoInstance.getModalidade();
 		values[24] = alunoInstance.getPeriodoIngreso();
 		values[25] = alunoInstance.getNotaExameAdmissao();

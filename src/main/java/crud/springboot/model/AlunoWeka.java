@@ -43,7 +43,7 @@ public class AlunoWeka{
 	private int Religiao_OTRARELIGION;
 	private int Religiao_CRISTIANOEVANGELICO;
 	private int Religiao_AGNOSTICO;
-	private double CursoGraduacao;
+	private String CursoGraduacao;
 	private int Modalidade;
 	private double PeriodoIngreso;
 	private double NotaExameAdmissao;
@@ -68,7 +68,7 @@ public class AlunoWeka{
 			int zonaMoradia_OTROS, int zonaMoradia_ZONARURAL, int trabalha, int estadoCivil_SOLTERO,
 			int estadoCivil_CASADO, int estadoCivil_DIVORCIADO, int estadoCivil_DESCONOCIDO, int estadoCivil_SEPARADO,
 			int estadoCivil_CONVIVIENTE, int estadoCivil_VIUDO, int escola, int religiao_CRISTIANOCATOLICO,
-			int religiao_OTRARELIGION, int religiao_CRISTIANOEVANGELICO, int religiao_AGNOSTICO, double cursoGraduacao,
+			int religiao_OTRARELIGION, int religiao_CRISTIANOEVANGELICO, int religiao_AGNOSTICO, String cursoGraduacao,
 			int modalidade, double periodoIngreso, double notaExameAdmissao, int totalNiveisCurso,
 			double totalCreditosCurso, double totalNiveisCursados, double porcentagemNC, double totalCreditosCursados,
 			double porcentagemCC, double periodoUltimaMatricula, double ultimoNivelEstudado,
@@ -312,11 +312,11 @@ public class AlunoWeka{
 		Religiao_AGNOSTICO = religiao_AGNOSTICO;
 	}
 
-	public double getCursoGraduacao() {
+	public String getCursoGraduacao() {
 		return CursoGraduacao;
 	}
 
-	public void setCursoGraduacao(double cursoGraduacao) {
+	public void setCursoGraduacao(String cursoGraduacao) {
 		CursoGraduacao = cursoGraduacao;
 	}
 

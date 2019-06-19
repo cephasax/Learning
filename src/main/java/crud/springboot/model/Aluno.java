@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "aluno")
 public class Aluno {
@@ -23,44 +22,46 @@ public class Aluno {
 	private int idade;
 	private String trabalha;
 
-	private String periodoingreso;
-	private double notaexameadmissao;
-	private int totalniveiscurso;
-	private int totacreditoscurso;
-	private int totalniveiscursados;
-	private double porcentagemniveiscursados;
-	private int totalcreditoscursados;
-	private double porcentagemcreditoscursados;
-	private String periodoultimamatricula;
-	private int ultimonivelestudado;
-	private double promedioultimoperiodo;
+	private String periodoIngresso;
+	private double notaExameAdmissao;
+	private int totalNiveisCurso;
+	private int totaCreditosCurso;
+	private int totalNiveisCursados;
+	private double porcentagemNiveisCursados;
+	private int totalCreditosCursados;
+	private double porcentagemCreditosCursados;
+	private String periodoUltimaMatricula;
+	private int ultimoNivelEstudado;
+	private double promedioUltimoPeriodo;
+
+	private String matricula;
 
 	@ManyToOne
-	@JoinColumn(name="id_moradia")
+	@JoinColumn(name = "id_moradia")
 	private Moradia moradia;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_sexo")
+	@JoinColumn(name = "id_sexo")
 	private Sexo sexo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_estado_civil")
+	@JoinColumn(name = "id_estado_civil")
 	private EstadoCivil estadoCivil;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_escola")
+	@JoinColumn(name = "id_escola")
 	private Escola escola;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_religiao")
+	@JoinColumn(name = "id_religiao")
 	private Religiao religiao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_curso_graduacao")
+	@JoinColumn(name = "id_curso_graduacao")
 	private CursoGraduacao cursoGraduacao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_modalidade")
+	@JoinColumn(name = "id_modalidade")
 	private Modalidade modalidade;
 
 	public int getId() {
@@ -95,92 +96,92 @@ public class Aluno {
 		this.trabalha = trabalha;
 	}
 
-	public String getPeriodoingreso() {
-		return periodoingreso;
+	public String getPeriodoIngresso() {
+		return periodoIngresso;
 	}
 
-	public void setPeriodoingreso(String periodoingreso) {
-		this.periodoingreso = periodoingreso;
+	public void setPeriodoIngresso(String periodoIngresso) {
+		this.periodoIngresso = periodoIngresso;
 	}
 
-	public double getNotaexameadmissao() {
-		return notaexameadmissao;
+	public double getNotaExameAdmissao() {
+		return notaExameAdmissao;
 	}
 
-	public void setNotaexameadmissao(double notaexameadmissao) {
-		this.notaexameadmissao = notaexameadmissao;
+	public void setNotaExameAdmissao(double notaExameAdmissao) {
+		this.notaExameAdmissao = notaExameAdmissao;
 	}
 
-	public int getTotalniveiscurso() {
-		return totalniveiscurso;
+	public int getTotalNiveisCurso() {
+		return totalNiveisCurso;
 	}
 
-	public void setTotalniveiscurso(int totalniveiscurso) {
-		this.totalniveiscurso = totalniveiscurso;
+	public void setTotalNiveisCurso(int totalNiveisCurso) {
+		this.totalNiveisCurso = totalNiveisCurso;
 	}
 
-	public int getTotacreditoscurso() {
-		return totacreditoscurso;
+	public int getTotaCreditosCurso() {
+		return totaCreditosCurso;
 	}
 
-	public void setTotacreditoscurso(int totacreditoscurso) {
-		this.totacreditoscurso = totacreditoscurso;
+	public void setTotaCreditosCurso(int totaCreditosCurso) {
+		this.totaCreditosCurso = totaCreditosCurso;
 	}
 
-	public int getTotalniveiscursados() {
-		return totalniveiscursados;
+	public int getTotalNiveisCursados() {
+		return totalNiveisCursados;
 	}
 
-	public void setTotalniveiscursados(int totalniveiscursados) {
-		this.totalniveiscursados = totalniveiscursados;
+	public void setTotalNiveisCursados(int totalNiveisCursados) {
+		this.totalNiveisCursados = totalNiveisCursados;
 	}
 
-	public double getPorcentagemniveiscursados() {
-		return porcentagemniveiscursados;
+	public double getPorcentagemNiveisCursados() {
+		return porcentagemNiveisCursados;
 	}
 
-	public void setPorcentagemniveiscursados(double porcentagemniveiscursados) {
-		this.porcentagemniveiscursados = porcentagemniveiscursados;
+	public void setPorcentagemNiveisCursados(double porcentagemNiveisCursados) {
+		this.porcentagemNiveisCursados = porcentagemNiveisCursados;
 	}
 
-	public int getTotalcreditoscursados() {
-		return totalcreditoscursados;
+	public int getTotalCreditosCursados() {
+		return totalCreditosCursados;
 	}
 
-	public void setTotalcreditoscursados(int totalcreditoscursados) {
-		this.totalcreditoscursados = totalcreditoscursados;
+	public void setTotalCreditosCursados(int totalCreditosCursados) {
+		this.totalCreditosCursados = totalCreditosCursados;
 	}
 
-	public double getPorcentagemcreditoscursados() {
-		return porcentagemcreditoscursados;
+	public double getPorcentagemCreditosCursados() {
+		return porcentagemCreditosCursados;
 	}
 
-	public void setPorcentagemcreditoscursados(double porcentagemcreditoscursados) {
-		this.porcentagemcreditoscursados = porcentagemcreditoscursados;
+	public void setPorcentagemCreditosCursados(double porcentagemCreditosCursados) {
+		this.porcentagemCreditosCursados = porcentagemCreditosCursados;
 	}
 
-	public String getPeriodoultimamatricula() {
-		return periodoultimamatricula;
+	public String getPeriodoUltimaMatricula() {
+		return periodoUltimaMatricula;
 	}
 
-	public void setPeriodoultimamatricula(String periodoultimamatricula) {
-		this.periodoultimamatricula = periodoultimamatricula;
+	public void setPeriodoUltimaMatricula(String periodoUltimaMatricula) {
+		this.periodoUltimaMatricula = periodoUltimaMatricula;
 	}
 
-	public int getUltimonivelestudado() {
-		return ultimonivelestudado;
+	public int getUltimoNivelEstudado() {
+		return ultimoNivelEstudado;
 	}
 
-	public void setUltimonivelestudado(int ultimonivelestudado) {
-		this.ultimonivelestudado = ultimonivelestudado;
+	public void setUltimoNivelEstudado(int ultimoNivelEstudado) {
+		this.ultimoNivelEstudado = ultimoNivelEstudado;
 	}
 
-	public double getPromedioultimoperiodo() {
-		return promedioultimoperiodo;
+	public double getPromedioUltimoPeriodo() {
+		return promedioUltimoPeriodo;
 	}
 
-	public void setPromedioultimoperiodo(double promedioultimoperiodo) {
-		this.promedioultimoperiodo = promedioultimoperiodo;
+	public void setPromedioUltimoPeriodo(double promedioUltimoPeriodo) {
+		this.promedioUltimoPeriodo = promedioUltimoPeriodo;
 	}
 
 	public Moradia getMoradia() {
@@ -237,6 +238,14 @@ public class Aluno {
 
 	public void setModalidade(Modalidade modalidade) {
 		this.modalidade = modalidade;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 
 }
