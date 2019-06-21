@@ -4,7 +4,8 @@ public class AlunoWekaBuilder {
 
 	private static int MIN_IDADE = 14;
 	private static int MAX_IDADE = 68;
-		
+	
+	//logica para contar os semestres a partir de 2010 -> inicia em 0
 	private static String MIN_PERIODO_INGRESO = "201000";
 	private static String MAX_PERIODO_INGRESO = "201900";
 	
@@ -155,7 +156,6 @@ public class AlunoWekaBuilder {
 		}
 	}
 
-	//CHECAR COM CARLOS - estava 1 e 2 e na base do modelo tem 0 e 1
 	private static void makeEscola(Aluno aluno, AlunoWeka alunoWeka) {
 		switch(aluno.getEscola().getDescripcion()) {
 			case("NACIONAL"):{
@@ -277,7 +277,7 @@ public class AlunoWekaBuilder {
 		}
 	}
 
-	//CHECAR COM CARLOS
+	//NOVA REGRA A FAZER
 	private static void makePeriodoIngreso(Aluno aluno, AlunoWeka alunoWeka) {
 		if (aluno.getPeriodoIngresso().equals(MIN_PERIODO_INGRESO)) {
 			alunoWeka.setPeriodoIngreso(0);
@@ -287,33 +287,59 @@ public class AlunoWekaBuilder {
 		}
 	}
 
-	//CHECAR COM CARLOS
 	private static void makeNotaExameAdmissao(Aluno aluno, AlunoWeka alunoWeka) {
 		Double d = normalize(MIN_NOTA_EXAME_ADMISSAO, MAX_NOTA_EXAME_ADMISSAO, aluno.getNotaExameAdmissao());
 		alunoWeka.setNotaExameAdmissao(d);
 	}
 	
-	//CHECAR COM CARLOS
+	//Por enquanto só a cursos com 10 níveis e com 12 níveis, ajeitar essa lógica sem quebrar a base original
 	private static void makeTotalNiveisCurso(Aluno aluno, AlunoWeka alunoWeka) {
 	
 		if (aluno.getTotalNiveisCurso() == MIN_TOTAL_NIVEIS_CURSO) {
 			alunoWeka.setNotaExameAdmissao(0);
 		}
 		else if (aluno.getTotalNiveisCurso() == MAX_TOTAL_NIVEIS_CURSO) {
-			alunoWeka.setNotaExameAdmissao(1);
+			alunoWeka.setTotalNiveisCurso(1);
 		}
 	}
 	
-	//CHECAR COM CARLOS
 	private static void makeTotalCreditosCurso(Aluno aluno, AlunoWeka alunoWeka) {
 		Double d = normalize(MIN_TOTAL_CREDITOS_CURSO, MAX_TOTAL_CREDITOS_CURSO, aluno.getTotaCreditosCurso());
 		alunoWeka.setTotalCreditosCurso(d);
 	}
 
 	
+	//porcentagem de niveis e creditos curso são o valor absoluto dele dividido pelo total do curso
+	//niveis e creditos curso são o valor absoluto dele dividido pelo total do curso
+	
+	//periodo ultima matricula mesma regra dos semestres
+	
+	
+	
 	
 	private static double normalize(double min, double max, double actual) {
 		return (actual - min) / (max - min);
 	}
 
+	public static int calcPeriodo(String periodoMinimo, String periodo) {
+
+		int anoMinimoInt = Integer.valueOf(periodoMinimo.substring(0, 4));
+		int semestreMinimoInt = Integer.valueOf(periodoMinimo.substring(4, 6));
+		
+		int reduzir;
+		if(semestreMinimoInt == 0) {
+			reduzir = 0;
+		}
+		else {
+			reduzir = 1;
+		}
+		
+		int ano = Integer.valueOf(periodo.substring(0, 4));
+		int semestre = Integer.valueOf(periodo.substring(4, 6));
+		
+		int result = ((ano % anoMinimoInt) * 2) + semestre - reduzir;
+		
+		return result;
+	}
+	
 }
