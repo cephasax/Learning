@@ -25,7 +25,7 @@ public class Aluno {
 	private String periodoIngresso;
 	private double notaExameAdmissao;
 	private int totalNiveisCurso;
-	private int totaCreditosCurso;
+	private int totalCreditosCurso;
 	private int totalNiveisCursados;
 	private double porcentagemNiveisCursados;
 	private int totalCreditosCursados;
@@ -120,12 +120,12 @@ public class Aluno {
 		this.totalNiveisCurso = totalNiveisCurso;
 	}
 
-	public int getTotaCreditosCurso() {
-		return totaCreditosCurso;
+	public int getTotalCreditosCurso() {
+		return totalCreditosCurso;
 	}
 
-	public void setTotaCreditosCurso(int totaCreditosCurso) {
-		this.totaCreditosCurso = totaCreditosCurso;
+	public void setTotalCreditosCurso(int totalCreditosCurso) {
+		this.totalCreditosCurso = totalCreditosCurso;
 	}
 
 	public int getTotalNiveisCursados() {

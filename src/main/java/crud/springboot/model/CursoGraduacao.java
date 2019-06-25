@@ -26,8 +26,10 @@ public class CursoGraduacao extends Curso {
 	private String descripcion;
 
 	@OneToMany(mappedBy = "cursoGraduacao", fetch = FetchType.LAZY)
-	@Cascade({CascadeType.ALL})
+	@Cascade({ CascadeType.ALL })
 	private Collection<Aluno> alunos;
+
+	private int periodosDuracao;
 
 	public int getId() {
 		return id;
@@ -53,5 +55,12 @@ public class CursoGraduacao extends Curso {
 		this.alunos = alunos;
 	}
 
+	public int getPeriodosDuracao() {
+		return periodosDuracao;
+	}
+
+	public void setPeriodosDuracao(int periodosDuracao) {
+		this.periodosDuracao = periodosDuracao;
+	}
 
 }

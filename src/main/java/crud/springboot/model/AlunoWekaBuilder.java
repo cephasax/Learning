@@ -8,6 +8,8 @@ public class AlunoWekaBuilder {
 	//logica para contar os semestres a partir de 2010 -> inicia em 0
 	private static String MIN_PERIODO_INGRESO = "201000";
 	private static String MAX_PERIODO_INGRESO = "201900";
+	private static int MIN_PERIODO_INGRESO_CONT = 0;
+	private static int MAX_PERIODO_INGRESO_CONT = 18;
 	
 	private static double MIN_NOTA_EXAME_ADMISSAO = 0;
 	private static double MAX_NOTA_EXAME_ADMISSAO = 100;
@@ -32,6 +34,8 @@ public class AlunoWekaBuilder {
 	
 	private static String MIN_PERIODO_ULTIMA_MATRICULA = "201000";
 	private static String MAX_PERIODO_ULTIMA_MATRICULA = "201900";
+	private static int MIN_PERIODO_ULTIMA_MATRICULA_CONT = 0;
+	private static int MAX_PERIODO_ULTIMA_MATRICULA_CONT = 18;
 	
 	private static double MIN_ULTIMO_NIVEL_ESTUDADO = 1;
 	private static double MAX_ULTIMO_NIVEL_ESTUDADO = 12;
@@ -39,14 +43,12 @@ public class AlunoWekaBuilder {
 	private static double MIN_PROMEDIO_ULTIMO_PERIODO = 0;
 	private static double MAX_PROMEDIO_ULTIMO_PERIODO = 19.67;
 
-	
-	
 	public static AlunoWeka buildAlunoWeka(Aluno aluno) {
-		AlunoWeka alunoWeka = new AlunoWeka();
+		AlunoWeka alunoWeka = build(aluno);
 		return alunoWeka;
 	}
 	
-	private AlunoWeka build(Aluno aluno) {
+	private static AlunoWeka build(Aluno aluno) {
 		AlunoWeka alunoWeka = new AlunoWeka();
 		
 		makeSexo(aluno, alunoWeka);
@@ -62,6 +64,13 @@ public class AlunoWekaBuilder {
 		makeNotaExameAdmissao(aluno, alunoWeka);
 		makeTotalNiveisCurso(aluno, alunoWeka);
 		makeTotalCreditosCurso(aluno, alunoWeka);
+		makeTotalNiveisCursados(aluno, alunoWeka);
+		makePercentNiveisCursados(aluno, alunoWeka);
+		makeTotalCreditosCursados(aluno, alunoWeka);
+		makePercentCreditosCursados(aluno, alunoWeka);
+		makePeriodoUltimaMatricula(aluno, alunoWeka);
+		makeUltimoNivelEstudado(aluno, alunoWeka);
+		makePromedioUltimoAno(aluno, alunoWeka);
 		
 		return alunoWeka;
 	
@@ -277,14 +286,9 @@ public class AlunoWekaBuilder {
 		}
 	}
 
-	//NOVA REGRA A FAZER
 	private static void makePeriodoIngreso(Aluno aluno, AlunoWeka alunoWeka) {
-		if (aluno.getPeriodoIngresso().equals(MIN_PERIODO_INGRESO)) {
-			alunoWeka.setPeriodoIngreso(0);
-		} 
-		else if (aluno.getPeriodoIngresso().equals(MAX_PERIODO_INGRESO)) {
-			alunoWeka.setPeriodoIngreso(1);
-		}
+		int qtdPeriodos = calcQtdPeriodo(MIN_PERIODO_INGRESO, aluno.getPeriodoIngresso());
+		alunoWeka.setPeriodoIngreso(normalize(MIN_PERIODO_INGRESO_CONT, MAX_PERIODO_INGRESO_CONT, qtdPeriodos));
 	}
 
 	private static void makeNotaExameAdmissao(Aluno aluno, AlunoWeka alunoWeka) {
@@ -304,24 +308,52 @@ public class AlunoWekaBuilder {
 	}
 	
 	private static void makeTotalCreditosCurso(Aluno aluno, AlunoWeka alunoWeka) {
-		Double d = normalize(MIN_TOTAL_CREDITOS_CURSO, MAX_TOTAL_CREDITOS_CURSO, aluno.getTotaCreditosCurso());
+		Double d = normalize(MIN_TOTAL_CREDITOS_CURSO, MAX_TOTAL_CREDITOS_CURSO, aluno.getTotalCreditosCurso());
 		alunoWeka.setTotalCreditosCurso(d);
 	}
 
+	private static void makeTotalNiveisCursados(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = normalize(MIN_TOTAL_NIVEIS_CURSADOS, MAX_TOTAL_NIVEIS_CURSADOS, aluno.getTotalNiveisCursados());
+		alunoWeka.setTotalNiveisCursados(d);
+	}
+	
+	private static void makePercentNiveisCursados(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = (double)aluno.getTotalNiveisCursados() / aluno.getTotalNiveisCurso();
+		alunoWeka.setPorcentagemNC(d);
+	}
 	
 	//porcentagem de niveis e creditos curso são o valor absoluto dele dividido pelo total do curso
-	//niveis e creditos curso são o valor absoluto dele dividido pelo total do curso
+	private static void makeTotalCreditosCursados(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = normalize(MIN_TOTAL_CREDITOS_CURSADOS, MAX_TOTAL_CREDITOS_CURSADOS, aluno.getTotalCreditosCursados());
+		alunoWeka.setTotalCreditosCursados(d);
+	}
 	
-	//periodo ultima matricula mesma regra dos semestres
+	private static void makePercentCreditosCursados(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = (double)aluno.getTotalCreditosCursados() / aluno.getTotalCreditosCurso();
+		alunoWeka.setPorcentagemCC(d);
+	}
 	
+	private static void makePeriodoUltimaMatricula(Aluno aluno, AlunoWeka alunoWeka) {
+		int ultimoPeriodo = calcQtdPeriodo(MIN_PERIODO_ULTIMA_MATRICULA, aluno.getPeriodoUltimaMatricula());
+		alunoWeka.setPeriodoUltimaMatricula(normalize(MIN_PERIODO_ULTIMA_MATRICULA_CONT, 
+				MAX_PERIODO_ULTIMA_MATRICULA_CONT, ultimoPeriodo));
+	}
 	
+	private static void makeUltimoNivelEstudado(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = normalize(MIN_ULTIMO_NIVEL_ESTUDADO,MAX_ULTIMO_NIVEL_ESTUDADO, aluno.getUltimoNivelEstudado());
+		alunoWeka.setUltimoNivelEstudado(d);
+	}
+
+	private static void  makePromedioUltimoAno(Aluno aluno, AlunoWeka alunoWeka) {
+		double d = normalize(MIN_PROMEDIO_ULTIMO_PERIODO, MAX_PROMEDIO_ULTIMO_PERIODO, aluno.getPromedioUltimoPeriodo());
+		alunoWeka.setPromedioUltimoPeriodo(d);
+	}
 	
-	
-	private static double normalize(double min, double max, double actual) {
+ 	private static double normalize(double min, double max, double actual) {
 		return (actual - min) / (max - min);
 	}
 
-	public static int calcPeriodo(String periodoMinimo, String periodo) {
+	public static int calcQtdPeriodo(String periodoMinimo, String periodo) {
 
 		int anoMinimoInt = Integer.valueOf(periodoMinimo.substring(0, 4));
 		int semestreMinimoInt = Integer.valueOf(periodoMinimo.substring(4, 6));
