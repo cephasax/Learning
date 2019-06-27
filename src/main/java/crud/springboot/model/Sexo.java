@@ -20,9 +20,10 @@ public class Sexo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_sexo")
+	@Column(name = "idsexo")
 	private int id;
 
+	@Column(name = "descripcion", nullable = true)
 	private String descripcion;
 
 	@OneToMany(mappedBy = "sexo", fetch = FetchType.LAZY)

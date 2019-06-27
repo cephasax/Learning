@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import crud.springboot.exception.CrudException;
@@ -15,7 +15,7 @@ public abstract class GenericService<T, PK> {
 	protected abstract boolean validate(T obj);
 
 	@Autowired
-	protected CrudRepository<T, PK> repo;
+	protected JpaRepository<T, PK> repo;
 	
 	public List<T> listar() {
 		return (List<T>) repo.findAll();

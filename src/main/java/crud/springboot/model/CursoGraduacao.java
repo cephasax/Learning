@@ -15,21 +15,20 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table(name = "curso_graduacao")
+@Table(name = "cursograduacao")
 public class CursoGraduacao extends Curso {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_curso_graduacao")
+	@Column(name = "idcurso")
 	private int id;
 
+	@Column(name = "descripcion", nullable = true)
 	private String descripcion;
 
 	@OneToMany(mappedBy = "cursoGraduacao", fetch = FetchType.LAZY)
 	@Cascade({ CascadeType.ALL })
 	private Collection<Aluno> alunos;
-
-	private int periodosDuracao;
 
 	public int getId() {
 		return id;
@@ -55,12 +54,5 @@ public class CursoGraduacao extends Curso {
 		this.alunos = alunos;
 	}
 
-	public int getPeriodosDuracao() {
-		return periodosDuracao;
-	}
-
-	public void setPeriodosDuracao(int periodosDuracao) {
-		this.periodosDuracao = periodosDuracao;
-	}
 
 }

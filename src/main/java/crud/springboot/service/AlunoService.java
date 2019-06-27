@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import crud.springboot.exception.CrudException;
 import crud.springboot.manager.MachineLearningManager;
 import crud.springboot.model.Aluno;
+import crud.springboot.model.Estudante;
 import crud.springboot.repository.AlunoRepository;
+import crud.springboot.repository.EstudanteRepository;
 import crud.springboot.wekautils.AlunoWekaUtils;
 
 @Service
@@ -17,6 +19,9 @@ public class AlunoService extends GenericService<Aluno, Integer> {
 
 	@Autowired
 	private AlunoRepository alunoRepo;
+	
+	@Autowired
+	private EstudanteRepository estudanteRepo;
 	
 	@Autowired
 	private MachineLearningManager mlmanager;
@@ -38,6 +43,10 @@ public class AlunoService extends GenericService<Aluno, Integer> {
 		} else {
 			throw new CrudException("Não foram encontrados registros");
 		}
+	}
+	
+	public void addAll(List<Aluno> alunos) {
+		alunoRepo.saveAll(alunos);
 	}
 	
 	/*

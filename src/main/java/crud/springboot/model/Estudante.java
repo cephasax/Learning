@@ -2,21 +2,18 @@ package crud.springboot.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aluno")
-public class Aluno {
+@Table(name = "estudante")
+public class Estudante {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "idaluno")
-	private Integer id;
+	private int id;
 
 	private String nombre;
 	private int idade;
@@ -35,7 +32,7 @@ public class Aluno {
 	private String matricula;
 
 	@Column(name = "class")
-	private String alunoClass;
+	private String estudanteClass;
 
 	@ManyToOne
 	@JoinColumn(name = "idmoradia")
@@ -64,11 +61,12 @@ public class Aluno {
 	@ManyToOne
 	@JoinColumn(name = "idmodalidade")
 	private Modalidade modalidade;
-	public Integer getId() {
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -80,11 +78,11 @@ public class Aluno {
 		this.nombre = nombre;
 	}
 
-	public Integer getIdade() {
+	public int getIdade() {
 		return idade;
 	}
 
-	public void setIdade(Integer idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 
@@ -104,59 +102,59 @@ public class Aluno {
 		this.periodoIngresso = periodoIngresso;
 	}
 
-	public Double getNotaExameAdmissao() {
+	public double getNotaExameAdmissao() {
 		return notaExameAdmissao;
 	}
 
-	public void setNotaExameAdmissao(Double notaExameAdmissao) {
+	public void setNotaExameAdmissao(double notaExameAdmissao) {
 		this.notaExameAdmissao = notaExameAdmissao;
 	}
 
-	public Integer getTotalNiveisCurso() {
+	public int getTotalNiveisCurso() {
 		return totalNiveisCurso;
 	}
 
-	public void setTotalNiveisCurso(Integer totalNiveisCurso) {
+	public void setTotalNiveisCurso(int totalNiveisCurso) {
 		this.totalNiveisCurso = totalNiveisCurso;
 	}
 
-	public Integer getTotalCreditosCurso() {
+	public int getTotalCreditosCurso() {
 		return totalCreditosCurso;
 	}
 
-	public void setTotalCreditosCurso(Integer totalCreditosCurso) {
+	public void setTotalCreditosCurso(int totalCreditosCurso) {
 		this.totalCreditosCurso = totalCreditosCurso;
 	}
 
-	public Integer getTotalNiveisCursados() {
+	public int getTotalNiveisCursados() {
 		return totalNiveisCursados;
 	}
 
-	public void setTotalNiveisCursados(Integer totalNiveisCursados) {
+	public void setTotalNiveisCursados(int totalNiveisCursados) {
 		this.totalNiveisCursados = totalNiveisCursados;
 	}
 
-	public Double getPorcentagemNiveisCursados() {
+	public double getPorcentagemNiveisCursados() {
 		return porcentagemNiveisCursados;
 	}
 
-	public void setPorcentagemNiveisCursados(Double porcentagemNiveisCursados) {
+	public void setPorcentagemNiveisCursados(double porcentagemNiveisCursados) {
 		this.porcentagemNiveisCursados = porcentagemNiveisCursados;
 	}
 
-	public Integer getTotalCreditosCursados() {
+	public int getTotalCreditosCursados() {
 		return totalCreditosCursados;
 	}
 
-	public void setTotalCreditosCursados(Integer totalCreditosCursados) {
+	public void setTotalCreditosCursados(int totalCreditosCursados) {
 		this.totalCreditosCursados = totalCreditosCursados;
 	}
 
-	public Double getPorcentagemCreditosCursados() {
+	public double getPorcentagemCreditosCursados() {
 		return porcentagemCreditosCursados;
 	}
 
-	public void setPorcentagemCreditosCursados(Double porcentagemCreditosCursados) {
+	public void setPorcentagemCreditosCursados(double porcentagemCreditosCursados) {
 		this.porcentagemCreditosCursados = porcentagemCreditosCursados;
 	}
 
@@ -168,19 +166,19 @@ public class Aluno {
 		this.periodoUltimaMatricula = periodoUltimaMatricula;
 	}
 
-	public Integer getUltimoNivelEstudado() {
+	public int getUltimoNivelEstudado() {
 		return ultimoNivelEstudado;
 	}
 
-	public void setUltimoNivelEstudado(Integer ultimoNivelEstudado) {
+	public void setUltimoNivelEstudado(int ultimoNivelEstudado) {
 		this.ultimoNivelEstudado = ultimoNivelEstudado;
 	}
 
-	public Double getPromedioUltimoPeriodo() {
+	public double getPromedioUltimoPeriodo() {
 		return promedioUltimoPeriodo;
 	}
 
-	public void setPromedioUltimoPeriodo(Double promedioUltimoPeriodo) {
+	public void setPromedioUltimoPeriodo(double promedioUltimoPeriodo) {
 		this.promedioUltimoPeriodo = promedioUltimoPeriodo;
 	}
 
@@ -248,55 +246,55 @@ public class Aluno {
 		this.matricula = matricula;
 	}
 
-	public String getAlunoClass() {
-		return alunoClass;
+	public String getEstudanteClass() {
+		return estudanteClass;
 	}
 
-	public void setAlunoClass(String alunoClass) {
-		this.alunoClass = alunoClass;
+	public void setEstudanteClass(String estudanteClass) {
+		this.estudanteClass = estudanteClass;
 	}
 
 	@Override
 	public String toString() {
-		return "Aluno [id=" + id + ", nombre=" + nombre + ", idade=" + idade + ", trabalha=" + trabalha
+		return "Estudante [id=" + id + ", nombre=" + nombre + ", idade=" + idade + ", trabalha=" + trabalha
 				+ ", periodoIngresso=" + periodoIngresso + ", notaExameAdmissao=" + notaExameAdmissao
 				+ ", totalNiveisCurso=" + totalNiveisCurso + ", totalCreditosCurso=" + totalCreditosCurso
 				+ ", totalNiveisCursados=" + totalNiveisCursados + ", porcentagemNiveisCursados="
 				+ porcentagemNiveisCursados + ", totalCreditosCursados=" + totalCreditosCursados
 				+ ", porcentagemCreditosCursados=" + porcentagemCreditosCursados + ", periodoUltimaMatricula="
 				+ periodoUltimaMatricula + ", ultimoNivelEstudado=" + ultimoNivelEstudado + ", promedioUltimoPeriodo="
-				+ promedioUltimoPeriodo + ", matricula=" + matricula + ", alunoClass=" + alunoClass + ", moradia="
-				+ moradia + ", sexo=" + sexo + ", estadoCivil=" + estadoCivil + ", escola=" + escola + ", religiao="
-				+ religiao + ", cursoGraduacao=" + cursoGraduacao + ", modalidade=" + modalidade + "]";
+				+ promedioUltimoPeriodo + ", matricula=" + matricula + ", estudanteClass=" + estudanteClass
+				+ ", moradia=" + moradia + ", sexo=" + sexo + ", estadoCivil=" + estadoCivil + ", escola=" + escola
+				+ ", religiao=" + religiao + ", cursoGraduacao=" + cursoGraduacao + ", modalidade=" + modalidade + "]";
 	}
 
-	public static Aluno makeFromEstudante(Estudante estudante) {
-		Aluno aluno = new Aluno();
-		aluno.setId(estudante.getId());
-		aluno.setNombre(estudante.getNombre());
-		aluno.setIdade(estudante.getIdade());
-		aluno.setTrabalha(estudante.getTrabalha());
-		aluno.setPeriodoIngresso(estudante.getPeriodoIngresso());
-		aluno.setNotaExameAdmissao(estudante.getNotaExameAdmissao());
-		aluno.setTotalNiveisCurso(estudante.getTotalNiveisCurso());
-		aluno.setTotalCreditosCurso(estudante.getTotalCreditosCurso());
-		aluno.setTotalNiveisCursados(estudante.getTotalNiveisCursados());
-		aluno.setPorcentagemNiveisCursados(estudante.getPorcentagemNiveisCursados());
-		aluno.setTotalCreditosCursados(estudante.getTotalCreditosCursados());
-		aluno.setPorcentagemCreditosCursados(estudante.getPorcentagemCreditosCursados());
-		aluno.setPeriodoUltimaMatricula(estudante.getPeriodoUltimaMatricula());
-		aluno.setUltimoNivelEstudado(estudante.getUltimoNivelEstudado());
-		aluno.setPromedioUltimoPeriodo(estudante.getPromedioUltimoPeriodo());
-		aluno.setMatricula(estudante.getMatricula());
-		aluno.setMoradia(estudante.getMoradia());
-		aluno.setSexo(estudante.getSexo());
-		aluno.setEstadoCivil(estudante.getEstadoCivil());
-		aluno.setEscola(estudante.getEscola());
-		aluno.setReligiao(estudante.getReligiao());
-		aluno.setCursoGraduacao(estudante.getCursoGraduacao());
-		aluno.setModalidade(estudante.getModalidade());
-		aluno.setAlunoClass(estudante.getEstudanteClass());
-		return aluno;
+	public static Estudante makeFromAluno(Aluno aluno) {
+		Estudante estudante = new Estudante();
+		estudante.setId(aluno.getId());
+		estudante.setNombre(aluno.getNombre());
+		estudante.setIdade(aluno.getIdade());
+		estudante.setTrabalha(aluno.getTrabalha());
+		estudante.setPeriodoIngresso(aluno.getPeriodoIngresso());
+		estudante.setNotaExameAdmissao(aluno.getNotaExameAdmissao());
+		estudante.setTotalNiveisCurso(aluno.getTotalNiveisCurso());
+		estudante.setTotalCreditosCurso(aluno.getTotalCreditosCurso());
+		estudante.setTotalNiveisCursados(aluno.getTotalNiveisCursados());
+		estudante.setPorcentagemNiveisCursados(aluno.getPorcentagemNiveisCursados());
+		estudante.setTotalCreditosCursados(aluno.getTotalCreditosCursados());
+		estudante.setPorcentagemCreditosCursados(aluno.getPorcentagemCreditosCursados());
+		estudante.setPeriodoUltimaMatricula(aluno.getPeriodoUltimaMatricula());
+		estudante.setUltimoNivelEstudado(aluno.getUltimoNivelEstudado());
+		estudante.setPromedioUltimoPeriodo(aluno.getPromedioUltimoPeriodo());
+		estudante.setMatricula(aluno.getMatricula());
+		estudante.setMoradia(aluno.getMoradia());
+		estudante.setSexo(aluno.getSexo());
+		estudante.setEstadoCivil(aluno.getEstadoCivil());
+		estudante.setEscola(aluno.getEscola());
+		estudante.setReligiao(aluno.getReligiao());
+		estudante.setCursoGraduacao(aluno.getCursoGraduacao());
+		estudante.setModalidade(aluno.getModalidade());
+		estudante.setEstudanteClass(aluno.getAlunoClass());
+		return estudante;
 	}
-	
+
 }

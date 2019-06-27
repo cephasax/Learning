@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import crud.springboot.model.Aluno;
+import crud.springboot.model.Estudante;
 
-public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
-	Optional<Aluno> findByMatricula(String matricula);
-	Optional<List<Aluno>> findByNombre(String nombre);
+public interface EstudanteRepository extends JpaRepository<Estudante, Integer> {
+	Optional<Estudante> findByMatricula(String matricula);
+	Optional<List<Estudante>> findByNombre(String nombre);
 }

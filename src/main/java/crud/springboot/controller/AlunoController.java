@@ -1,5 +1,7 @@
 package crud.springboot.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import crud.springboot.exception.CrudException;
 import crud.springboot.model.Aluno;
+import crud.springboot.model.Estudante;
 import crud.springboot.service.AlunoService;
+import crud.springboot.service.EstudanteService;
 
 @Controller
 public class AlunoController {
@@ -22,6 +26,9 @@ public class AlunoController {
 	@Autowired
 	private AlunoService alunoService;
 
+	@Autowired
+	private EstudanteService estudanteService;
+	
 	public AlunoController() {
 
 	}
@@ -30,7 +37,8 @@ public class AlunoController {
 	public ModelAndView list(Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("pages/aluno/list");
-		modelAndView.addObject(LIST_OBJ, alunoService.listar());
+		//modelAndView.addObject(LIST_OBJ, alunoService.listar());
+		doSomething();
 		return modelAndView;
 	}
 
@@ -70,5 +78,16 @@ public class AlunoController {
 			e.printStackTrace();
 		}
 		return list(model);
+	}
+	
+	private void doSomething() {
+		ArrayList<Estudante> estudante = (ArrayList<Estudante>) estudanteService.listar();
+		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+		
+		for(Estudante e: estudante) {
+			Aluno a = Aluno.makeFromEstudante(e);
+			alunos.add(a);
+		}
+		alunoService.addAll(alunos);
 	}
 }

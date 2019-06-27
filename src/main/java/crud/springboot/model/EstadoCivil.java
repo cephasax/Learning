@@ -15,14 +15,15 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table(name = "estado_civil")
+@Table(name = "estadocivil")
 public class EstadoCivil {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_estado_civil")
+	@Column(name = "idestadocivil")
 	private int id;
 
+	@Column(name = "descripcion", nullable = true)
 	private String descripcion;
 
 	@OneToMany(mappedBy = "estadoCivil", fetch = FetchType.LAZY)

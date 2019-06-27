@@ -10,52 +10,126 @@ import javax.persistence.Table;
 import crud.springboot.enums.AlunoClasses;
 
 @Entity
-@Table(name = "aluno_weka")
+@Table(name = "alunoweka")
 public class AlunoWeka{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_aluno_weka")
+	@Column(name = "idalunoweka")
 	private int id;
 
+	@Column(name = "nome", nullable = true)
 	private String nome;
+	
+	@Column(name = "matricula", nullable = true)
 	private String matricula;
 
+	@Column(name = "sexo", nullable = true)
 	private int Sexo;
+	
+	@Column(name = "idade", nullable = true)
 	private double Idade;
+	
+	@Column(name = "ZonaMoradia_ZONARESIDENCIAL", nullable = true)
 	private int ZonaMoradia_ZONARESIDENCIAL;
+	
+	@Column(name = "ZonaMoradia_ASENTAMIENTOHUMANO", nullable = true)
 	private int ZonaMoradia_ASENTAMIENTOHUMANO;
+	
+	@Column(name = "ZonaMoradia_URBANIZACION", nullable = true)
 	private int ZonaMoradia_URBANIZACION;
+	
+	@Column(name = "ZonaMoradia_CASCOURBANO", nullable = true)
 	private int ZonaMoradia_CASCOURBANO;
+	
+	@Column(name = "ZonaMoradia_PUEBLOJOVEN", nullable = true)
 	private int ZonaMoradia_PUEBLOJOVEN;
+	
+	@Column(name = "ZonaMoradia_OTROS", nullable = true)
 	private int ZonaMoradia_OTROS;
+	
+	@Column(name = "ZonaMoradia_ZONARURAL", nullable = true)
 	private int ZonaMoradia_ZONARURAL;
+	
+	@Column(name = "Trabalha", nullable = true)
 	private int Trabalha;
+	
+	@Column(name = "EstadoCivil_SOLTERO", nullable = true)
 	private int EstadoCivil_SOLTERO;
+	
+	@Column(name = "EstadoCivil_CASADO", nullable = true)
 	private int EstadoCivil_CASADO;
+	
+	@Column(name = "EstadoCivil_DIVORCIADO", nullable = true)
 	private int EstadoCivil_DIVORCIADO;
+	
+	@Column(name = "EstadoCivil_DESCONOCIDO", nullable = true)
 	private int EstadoCivil_DESCONOCIDO;
+	
+	@Column(name = "EstadoCivil_SEPARADO", nullable = true)
 	private int EstadoCivil_SEPARADO;
+	
+	@Column(name = "EstadoCivil_CONVIVIENTE", nullable = true)
 	private int EstadoCivil_CONVIVIENTE;
+	
+	@Column(name = "EstadoCivil_VIUDO", nullable = true)
 	private int EstadoCivil_VIUDO;
+	
+	@Column(name = "Escola", nullable = true)
 	private int Escola;
+	
+	@Column(name = "Religiao_CRISTIANOCATOLICO", nullable = true)
 	private int Religiao_CRISTIANOCATOLICO;
+	
+	@Column(name = "Religiao_OTRARELIGION", nullable = true)
 	private int Religiao_OTRARELIGION;
+	
+	@Column(name = "Religiao_CRISTIANOEVANGELICO", nullable = true)
 	private int Religiao_CRISTIANOEVANGELICO;
+	
+	@Column(name = "Religiao_AGNOSTICO", nullable = true)
 	private int Religiao_AGNOSTICO;
+	
+	@Column(name = "CursoGraduacao", nullable = true)
 	private String CursoGraduacao;
+	
+	@Column(name = "Modalidade", nullable = true)
 	private int Modalidade;
+	
+	@Column(name = "PeriodoIngreso", nullable = true)
 	private double PeriodoIngreso;
+	
+	@Column(name = "NotaExameAdmissao", nullable = true)
 	private double NotaExameAdmissao;
+	
+	@Column(name = "TotalNiveisCurso", nullable = true)
 	private int TotalNiveisCurso;
+	
+	@Column(name = "TotalCreditosCurso", nullable = true)
 	private double TotalCreditosCurso;
+	
+	@Column(name = "TotalNiveisCursados", nullable = true)
 	private double TotalNiveisCursados;
+	
+	@Column(name = "PorcentagemNC", nullable = true)
 	private double PorcentagemNC;
+	
+	@Column(name = "TotalCreditosCursados", nullable = true)
 	private double TotalCreditosCursados;
+	
+	@Column(name = "PorcentagemCC", nullable = true)
 	private double PorcentagemCC;
+	
+	@Column(name = "PeriodoUltimaMatricula", nullable = true)
 	private double PeriodoUltimaMatricula;
+	
+	@Column(name = "UltimoNivelEstudado", nullable = true)
 	private double UltimoNivelEstudado;
+	
+	@Column(name = "PromedioUltimoPeriodo", nullable = true)
 	private double PromedioUltimoPeriodo;
+	
+	@Column(name = "alunoClass", nullable = true)
 	private String alunoClass;
 
 	public AlunoWeka() {
