@@ -11,6 +11,9 @@ public class AlunoWekaBuilder {
 	private static int MIN_PERIODO_INGRESO_CONT = 0;
 	private static int MAX_PERIODO_INGRESO_CONT = 18;
 	
+	private static int MIN_ID_CURSO_GRADUCAO = 1;
+	private static int MAX_ID_CURSO_GRADUCAO = 34;
+	
 	private static double MIN_NOTA_EXAME_ADMISSAO = 0;
 	private static double MAX_NOTA_EXAME_ADMISSAO = 100;
 	
@@ -51,6 +54,7 @@ public class AlunoWekaBuilder {
 	private static AlunoWeka build(Aluno aluno) {
 		AlunoWeka alunoWeka = new AlunoWeka();
 		
+		makeIdAlunoWeka(aluno, alunoWeka);
 		makeSexo(aluno, alunoWeka);
 		makeIdade(aluno, alunoWeka);
 		makeZonaMoradia(aluno, alunoWeka);
@@ -74,6 +78,10 @@ public class AlunoWekaBuilder {
 		
 		return alunoWeka;
 	
+	}
+	
+	private static void makeIdAlunoWeka(Aluno aluno, AlunoWeka alunoWeka) {
+		alunoWeka.setId(aluno.getId());
 	}
 	
 	private static void makeSexo(Aluno aluno, AlunoWeka alunoWeka) {
@@ -127,7 +135,16 @@ public class AlunoWekaBuilder {
 	}
 	
 	private static void makeTrabalha(Aluno aluno, AlunoWeka alunoWeka) {
-		alunoWeka.setTrabalha(Integer.valueOf(aluno.getTrabalha()));
+		switch(aluno.getTrabalha()){
+			case("N"):{
+				alunoWeka.setTrabalha(0);
+				break;
+			}
+			case("S"):{
+				alunoWeka.setTrabalha(1);
+				break;
+			}
+		}
 	}
 	
 	private static void makeEstadoCivil(Aluno aluno, AlunoWeka alunoWeka) {
@@ -200,77 +217,8 @@ public class AlunoWekaBuilder {
 	}
 
 	private static void makeCursoGraduacao(Aluno aluno, AlunoWeka alunoWeka) {
-		
-		switch(aluno.getCursoGraduacao().getDescripcion()) {
-			case("ENGENHARIA CIVIL"):{
-				alunoWeka.setCursoGraduacao("ENGENHARIA CIVIL");
-				break;
-			}
-			case("ODONTOLOGIA"):{
-				alunoWeka.setCursoGraduacao("ODONTOLOGIA");
-				break;
-			}
-			case("ADMINISTRACAO"):{
-				alunoWeka.setCursoGraduacao("ADMINISTRACAO");
-				break;
-			}
-			case("ENFERMAGEM"):{
-				alunoWeka.setCursoGraduacao("ENFERMAGEM");
-				break;
-			}
-			case("OBSTETRICIA"):{
-				alunoWeka.setCursoGraduacao("OBSTETRICIA");
-				break;
-			}
-			case("ADMINISTRACAO TURISTICA"):{
-				alunoWeka.setCursoGraduacao("ADMINISTRACAO TURISTICA");
-				break;
-			}
-			case("PSICOLOGIA"):{
-				alunoWeka.setCursoGraduacao("PSICOLOGIA");
-				break;
-			}
-			case("CONTABILIDADE"):{
-				alunoWeka.setCursoGraduacao("CONTABILIDADE");
-				break;
-			}
-			case("EDUCACAO SECUNDARIA ESP. MATEMATICA, FIS E COM"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO SECUNDARIA ESP. MATEMATICA, FIS E COM");
-				break;
-			}
-			case("EDUCACAO SECUNDARIA ESP. LINGUA, LIT E COM"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO SECUNDARIA ESP. LINGUA, LIT E COM");
-				break;
-			}
-			case("EDUCACAO SECUNDARIA ESP. HISTORIA, GEO E CIE"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO SECUNDARIA ESP. HISTORIA, GEO E CIE");
-				break;
-			}
-			case("EDUCACAO EM CIENCIAS RELIGIOSAS"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO EM CIENCIAS RELIGIOSAS");
-				break;
-			}
-			case("EDUCACAO PRIMARIA"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO PRIMARIA");
-				break;
-			}
-			case("DIREITO"):{
-				alunoWeka.setCursoGraduacao("DIREITO");
-				break;
-			}
-			case("EDUCACAO INICIAL"):{
-				alunoWeka.setCursoGraduacao("EDUCACAO INICIAL");
-				break;
-			}
-			case("FARMACIA E BIOQUIMICA"):{
-				alunoWeka.setCursoGraduacao("FARMACIA E BIOQUIMICA");
-				break;
-			}
-			case("ENGENHARIA DE SISTEMAS"):{
-				alunoWeka.setCursoGraduacao("ENGENHARIA DE SISTEMAS");
-				break;
-			}
-		}
+		Double d = normalize(MIN_ID_CURSO_GRADUCAO, MAX_ID_CURSO_GRADUCAO, aluno.getCursoGraduacao().getId());
+		alunoWeka.setCursoGraduacao(d);
 	}
 
 	private static void makeModalidade(Aluno aluno, AlunoWeka alunoWeka) {

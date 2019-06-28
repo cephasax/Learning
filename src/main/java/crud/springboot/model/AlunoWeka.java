@@ -18,118 +18,112 @@ public class AlunoWeka{
 	@Column(name = "idalunoweka")
 	private int id;
 
-	@Column(name = "nome", nullable = true)
-	private String nome;
-	
-	@Column(name = "matricula", nullable = true)
-	private String matricula;
-
-	@Column(name = "sexo", nullable = true)
+	@Column(name = "sexo")
 	private int Sexo;
 	
-	@Column(name = "idade", nullable = true)
+	@Column(name = "idade")
 	private double Idade;
 	
-	@Column(name = "ZonaMoradia_ZONARESIDENCIAL", nullable = true)
+	@Column(name = "ZonaMoradia_ZONARESIDENCIAL")
 	private int ZonaMoradia_ZONARESIDENCIAL;
 	
-	@Column(name = "ZonaMoradia_ASENTAMIENTOHUMANO", nullable = true)
+	@Column(name = "ZonaMoradia_ASENTAMIENTOHUMANO")
 	private int ZonaMoradia_ASENTAMIENTOHUMANO;
 	
-	@Column(name = "ZonaMoradia_URBANIZACION", nullable = true)
+	@Column(name = "ZonaMoradia_URBANIZACION")
 	private int ZonaMoradia_URBANIZACION;
 	
-	@Column(name = "ZonaMoradia_CASCOURBANO", nullable = true)
+	@Column(name = "ZonaMoradia_CASCOURBANO")
 	private int ZonaMoradia_CASCOURBANO;
 	
-	@Column(name = "ZonaMoradia_PUEBLOJOVEN", nullable = true)
+	@Column(name = "ZonaMoradia_PUEBLOJOVEN")
 	private int ZonaMoradia_PUEBLOJOVEN;
 	
-	@Column(name = "ZonaMoradia_OTROS", nullable = true)
+	@Column(name = "ZonaMoradia_OTROS")
 	private int ZonaMoradia_OTROS;
 	
-	@Column(name = "ZonaMoradia_ZONARURAL", nullable = true)
+	@Column(name = "ZonaMoradia_ZONARURAL")
 	private int ZonaMoradia_ZONARURAL;
 	
-	@Column(name = "Trabalha", nullable = true)
+	@Column(name = "Trabalha")
 	private int Trabalha;
 	
-	@Column(name = "EstadoCivil_SOLTERO", nullable = true)
+	@Column(name = "EstadoCivil_SOLTERO")
 	private int EstadoCivil_SOLTERO;
 	
-	@Column(name = "EstadoCivil_CASADO", nullable = true)
+	@Column(name = "EstadoCivil_CASADO")
 	private int EstadoCivil_CASADO;
 	
-	@Column(name = "EstadoCivil_DIVORCIADO", nullable = true)
+	@Column(name = "EstadoCivil_DIVORCIADO")
 	private int EstadoCivil_DIVORCIADO;
 	
-	@Column(name = "EstadoCivil_DESCONOCIDO", nullable = true)
+	@Column(name = "EstadoCivil_DESCONOCIDO")
 	private int EstadoCivil_DESCONOCIDO;
 	
-	@Column(name = "EstadoCivil_SEPARADO", nullable = true)
+	@Column(name = "EstadoCivil_SEPARADO")
 	private int EstadoCivil_SEPARADO;
 	
-	@Column(name = "EstadoCivil_CONVIVIENTE", nullable = true)
+	@Column(name = "EstadoCivil_CONVIVIENTE")
 	private int EstadoCivil_CONVIVIENTE;
 	
-	@Column(name = "EstadoCivil_VIUDO", nullable = true)
+	@Column(name = "EstadoCivil_VIUDO")
 	private int EstadoCivil_VIUDO;
 	
-	@Column(name = "Escola", nullable = true)
+	@Column(name = "Escola")
 	private int Escola;
 	
-	@Column(name = "Religiao_CRISTIANOCATOLICO", nullable = true)
+	@Column(name = "Religiao_CRISTIANOCATOLICO")
 	private int Religiao_CRISTIANOCATOLICO;
 	
-	@Column(name = "Religiao_OTRARELIGION", nullable = true)
+	@Column(name = "Religiao_OTRARELIGION")
 	private int Religiao_OTRARELIGION;
 	
-	@Column(name = "Religiao_CRISTIANOEVANGELICO", nullable = true)
+	@Column(name = "Religiao_CRISTIANOEVANGELICO")
 	private int Religiao_CRISTIANOEVANGELICO;
 	
-	@Column(name = "Religiao_AGNOSTICO", nullable = true)
+	@Column(name = "Religiao_AGNOSTICO")
 	private int Religiao_AGNOSTICO;
 	
-	@Column(name = "CursoGraduacao", nullable = true)
-	private String CursoGraduacao;
+	@Column(name = "CursoGraduacao")
+	private double CursoGraduacao;
 	
-	@Column(name = "Modalidade", nullable = true)
+	@Column(name = "Modalidade")
 	private int Modalidade;
 	
-	@Column(name = "PeriodoIngreso", nullable = true)
+	@Column(name = "PeriodoIngreso")
 	private double PeriodoIngreso;
 	
-	@Column(name = "NotaExameAdmissao", nullable = true)
+	@Column(name = "NotaExameAdmissao")
 	private double NotaExameAdmissao;
 	
-	@Column(name = "TotalNiveisCurso", nullable = true)
+	@Column(name = "TotalNiveisCurso")
 	private int TotalNiveisCurso;
 	
-	@Column(name = "TotalCreditosCurso", nullable = true)
+	@Column(name = "TotalCreditosCurso")
 	private double TotalCreditosCurso;
 	
-	@Column(name = "TotalNiveisCursados", nullable = true)
+	@Column(name = "TotalNiveisCursados")
 	private double TotalNiveisCursados;
 	
-	@Column(name = "PorcentagemNC", nullable = true)
+	@Column(name = "PorcentagemNC")
 	private double PorcentagemNC;
 	
-	@Column(name = "TotalCreditosCursados", nullable = true)
+	@Column(name = "TotalCreditosCursados")
 	private double TotalCreditosCursados;
 	
-	@Column(name = "PorcentagemCC", nullable = true)
+	@Column(name = "PorcentagemCC")
 	private double PorcentagemCC;
 	
-	@Column(name = "PeriodoUltimaMatricula", nullable = true)
+	@Column(name = "PeriodoUltimaMatricula")
 	private double PeriodoUltimaMatricula;
 	
-	@Column(name = "UltimoNivelEstudado", nullable = true)
+	@Column(name = "UltimoNivelEstudado")
 	private double UltimoNivelEstudado;
 	
-	@Column(name = "PromedioUltimoPeriodo", nullable = true)
+	@Column(name = "PromedioUltimoPeriodo")
 	private double PromedioUltimoPeriodo;
 	
-	@Column(name = "alunoClass", nullable = true)
+	@Column(name = "alunoClass")
 	private String alunoClass;
 
 	public AlunoWeka() {
@@ -142,7 +136,7 @@ public class AlunoWeka{
 			int zonaMoradia_OTROS, int zonaMoradia_ZONARURAL, int trabalha, int estadoCivil_SOLTERO,
 			int estadoCivil_CASADO, int estadoCivil_DIVORCIADO, int estadoCivil_DESCONOCIDO, int estadoCivil_SEPARADO,
 			int estadoCivil_CONVIVIENTE, int estadoCivil_VIUDO, int escola, int religiao_CRISTIANOCATOLICO,
-			int religiao_OTRARELIGION, int religiao_CRISTIANOEVANGELICO, int religiao_AGNOSTICO, String cursoGraduacao,
+			int religiao_OTRARELIGION, int religiao_CRISTIANOEVANGELICO, int religiao_AGNOSTICO, double cursoGraduacao,
 			int modalidade, double periodoIngreso, double notaExameAdmissao, int totalNiveisCurso,
 			double totalCreditosCurso, double totalNiveisCursados, double porcentagemNC, double totalCreditosCursados,
 			double porcentagemCC, double periodoUltimaMatricula, double ultimoNivelEstudado,
@@ -192,22 +186,6 @@ public class AlunoWeka{
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
 	}
 
 	public int getSexo() {
@@ -386,11 +364,11 @@ public class AlunoWeka{
 		Religiao_AGNOSTICO = religiao_AGNOSTICO;
 	}
 
-	public String getCursoGraduacao() {
+	public double getCursoGraduacao() {
 		return CursoGraduacao;
 	}
 
-	public void setCursoGraduacao(String cursoGraduacao) {
+	public void setCursoGraduacao(double cursoGraduacao) {
 		CursoGraduacao = cursoGraduacao;
 	}
 
@@ -496,6 +474,30 @@ public class AlunoWeka{
 
 	public void setAlunoClass(String alunoClass) {
 		this.alunoClass = alunoClass;
+	}
+
+	@Override
+	public String toString() {
+		return "AlunoWeka [id=" + id + ", Sexo=" + Sexo + ", Idade="
+				+ Idade + ", ZonaMoradia_ZONARESIDENCIAL=" + ZonaMoradia_ZONARESIDENCIAL
+				+ ", ZonaMoradia_ASENTAMIENTOHUMANO=" + ZonaMoradia_ASENTAMIENTOHUMANO + ", ZonaMoradia_URBANIZACION="
+				+ ZonaMoradia_URBANIZACION + ", ZonaMoradia_CASCOURBANO=" + ZonaMoradia_CASCOURBANO
+				+ ", ZonaMoradia_PUEBLOJOVEN=" + ZonaMoradia_PUEBLOJOVEN + ", ZonaMoradia_OTROS=" + ZonaMoradia_OTROS
+				+ ", ZonaMoradia_ZONARURAL=" + ZonaMoradia_ZONARURAL + ", Trabalha=" + Trabalha
+				+ ", EstadoCivil_SOLTERO=" + EstadoCivil_SOLTERO + ", EstadoCivil_CASADO=" + EstadoCivil_CASADO
+				+ ", EstadoCivil_DIVORCIADO=" + EstadoCivil_DIVORCIADO + ", EstadoCivil_DESCONOCIDO="
+				+ EstadoCivil_DESCONOCIDO + ", EstadoCivil_SEPARADO=" + EstadoCivil_SEPARADO
+				+ ", EstadoCivil_CONVIVIENTE=" + EstadoCivil_CONVIVIENTE + ", EstadoCivil_VIUDO=" + EstadoCivil_VIUDO
+				+ ", Escola=" + Escola + ", Religiao_CRISTIANOCATOLICO=" + Religiao_CRISTIANOCATOLICO
+				+ ", Religiao_OTRARELIGION=" + Religiao_OTRARELIGION + ", Religiao_CRISTIANOEVANGELICO="
+				+ Religiao_CRISTIANOEVANGELICO + ", Religiao_AGNOSTICO=" + Religiao_AGNOSTICO + ", CursoGraduacao="
+				+ CursoGraduacao + ", Modalidade=" + Modalidade + ", PeriodoIngreso=" + PeriodoIngreso
+				+ ", NotaExameAdmissao=" + NotaExameAdmissao + ", TotalNiveisCurso=" + TotalNiveisCurso
+				+ ", TotalCreditosCurso=" + TotalCreditosCurso + ", TotalNiveisCursados=" + TotalNiveisCursados
+				+ ", PorcentagemNC=" + PorcentagemNC + ", TotalCreditosCursados=" + TotalCreditosCursados
+				+ ", PorcentagemCC=" + PorcentagemCC + ", PeriodoUltimaMatricula=" + PeriodoUltimaMatricula
+				+ ", UltimoNivelEstudado=" + UltimoNivelEstudado + ", PromedioUltimoPeriodo=" + PromedioUltimoPeriodo
+				+ ", alunoClass=" + alunoClass + "]";
 	}
 
 }

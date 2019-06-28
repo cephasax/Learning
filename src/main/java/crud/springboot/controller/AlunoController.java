@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import crud.springboot.exception.CrudException;
+import crud.springboot.manager.MachineLearningManager;
 import crud.springboot.model.Aluno;
-import crud.springboot.model.Estudante;
+import crud.springboot.model.AlunoWeka;
+import crud.springboot.model.AlunoWekaBuilder;
 import crud.springboot.service.AlunoService;
-import crud.springboot.service.EstudanteService;
 
 @Controller
 public class AlunoController {
@@ -25,9 +26,9 @@ public class AlunoController {
 
 	@Autowired
 	private AlunoService alunoService;
-
+	
 	@Autowired
-	private EstudanteService estudanteService;
+	private MachineLearningManager mlmanager;
 	
 	public AlunoController() {
 
@@ -38,7 +39,26 @@ public class AlunoController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("pages/aluno/list");
 		//modelAndView.addObject(LIST_OBJ, alunoService.listar());
-		doSomething();
+		
+		//CEPHAS
+		ArrayList<Aluno> alunos = (ArrayList<Aluno>)alunoService.listar();
+		ArrayList<AlunoWeka> alunosWeka = new ArrayList<AlunoWeka>();
+		
+		System.out.println("alunos na tabela ALUNO: " + alunos.size());
+		for (Aluno aluno: alunos) {
+			AlunoWeka al = new AlunoWeka();
+			if(aluno.getAlunoClass().equals("EN CURSO")) {
+				al = AlunoWekaBuilder.buildAlunoWeka(aluno);
+				alunosWeka.add(al);
+			}
+		}
+		System.out.println("alunosWeka na tabela ALUNO: " + alunosWeka.size());
+		
+		for(AlunoWeka a: alunosWeka) {
+			a = mlmanager.makePredictionForAluno(a);
+			System.out.println(a.toString());
+		}
+		
 		return modelAndView;
 	}
 
@@ -78,16 +98,5 @@ public class AlunoController {
 			e.printStackTrace();
 		}
 		return list(model);
-	}
-	
-	private void doSomething() {
-		ArrayList<Estudante> estudante = (ArrayList<Estudante>) estudanteService.listar();
-		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-		
-		for(Estudante e: estudante) {
-			Aluno a = Aluno.makeFromEstudante(e);
-			alunos.add(a);
-		}
-		alunoService.addAll(alunos);
 	}
 }
